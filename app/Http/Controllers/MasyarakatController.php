@@ -36,17 +36,14 @@ class MasyarakatController extends Controller
     {
         // Validasi data
         $validated = $request->validate([
-            'nik'               => 'required|string|max:20|unique:masyarakats,nik',
             'nama'              => 'required|string|max:255',
-            'jenis_kelamin'     => 'required|in:Laki-laki,Perempuan',
-            'alamat'            => 'required|string',
             'pekerjaan'         => 'required|string|max:100',
             'penghasilan'       => 'required',
             'jumlah_tanggungan' => 'required|integer|min:0',
             'status_rumah'      => 'required|string|max:100',
-            'kondisi_rumah'     => 'required|string|max:100',
-            'no_hp'             => 'required|string|max:15',
+            'pendidikan'        => 'required|string|max:100',
         ]);
+
 
         // Bersihkan format rupiah langsung di array
         $validated['penghasilan'] = (int) preg_replace('/[^\d]/', '', $validated['penghasilan']);
@@ -73,16 +70,12 @@ class MasyarakatController extends Controller
     {
         // Validasi data
         $validated = $request->validate([
-            'nik'               => 'required|string|max:20|unique:masyarakats,nik,' . $id,
             'nama'              => 'required|string|max:255',
-            'jenis_kelamin'     => 'required|in:Laki-laki,Perempuan',
-            'alamat'            => 'required|string',
             'pekerjaan'         => 'required|string|max:100',
             'penghasilan'       => 'required',
             'jumlah_tanggungan' => 'required|integer|min:0',
             'status_rumah'      => 'required|string|max:100',
-            'kondisi_rumah'     => 'required|string|max:100',
-            'no_hp'             => 'required|string|max:15',
+            'pendidikan'        => 'required|string|max:100',
         ]);
 
         // Bersihkan format rupiah

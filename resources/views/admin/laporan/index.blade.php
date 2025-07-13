@@ -25,24 +25,26 @@
 
                             <!-- Table Data -->
                             <table class="table table-bordered">
-                                <thead class="table-primary text-center">
+                                <thead class="table-primary">
                                     <tr>
-                                        <th style="width: 20px">NIK</th>
+
                                         <th>Alternatif</th>
-                                        <th>Kondisi Rumah</th>
+                                        <th>Pekerjaan</th>
                                         <th>Status Rumah</th>
-                                        <th>Nilai Preferensi</th>
-                                        <th>Ranking</th>
+                                        <th>Pendidikan Terakhir</th>
+                                        <th class="text-center">Nilai Preferensi</th>
+                                        <th class="text-center">Ranking</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php $ranking = 1; @endphp
                                     @foreach ($preferensi as $id => $yi)
                                         <tr>
-                                            <td>{{ $masyarakats->find($id)->nik }}</td>
+
                                             <td>{{ $masyarakats->find($id)->nama }}</td>
-                                            <td>{{ $masyarakats->find($id)->kondisi_rumah }}</td>
+                                            <td>{{ $masyarakats->find($id)->pekerjaan }}</td>
                                             <td>{{ $masyarakats->find($id)->status_rumah }}</td>
+                                            <td>{{ $masyarakats->find($id)->pendidikan }}</td>
                                             <td class="text-center">
                                                 <strong>{{ number_format($yi, 4) }}</strong>
                                             </td>

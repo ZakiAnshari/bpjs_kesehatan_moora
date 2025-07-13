@@ -40,16 +40,16 @@
 
         <div class="table-responsive text-nowrap">
             <table class="table table-hover table-bordered align-middle text-nowrap mb-0">
-                <thead class="table-light text-center">
+                <thead class="table-lights">
                     <tr>
                         <th style="width: 5px">No</th>
-                        <th style="width: 10px">NIK</th>
-                        <th>Nama</th>
 
-                        <th>Kondisi Rumah</th>
+                        <th>Alternatif</th>
+                        <th>Pekerjaan</th>
                         <th>Status Rumah</th>
-                        <th>Nilai Preferensi</th>
-                        <th style="width: 5px">Peringkat</th>
+                        <th>Pendidikan Terakhir</th>
+                        <th class="text-center">Nilai Preferensi</th>
+                        <th class="text-center">Ranking</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,11 +60,10 @@
                         @endphp
                         <tr>
                             <td class="text-center">{{ $loop->iteration }}</td>
-                            <td>{{ $masyarakat->nik }}</td>
-                            <td>{{ $masyarakat->nama }}</td>
-
-                            <td>{{ $masyarakat->kondisi_rumah }}</td>
-                            <td>{{ $masyarakat->status_rumah }}</td>
+                            <td>{{ $masyarakats->find($id)->nama }}</td>
+                            <td>{{ $masyarakats->find($id)->pekerjaan }}</td>
+                            <td>{{ $masyarakats->find($id)->status_rumah }}</td>
+                            <td>{{ $masyarakats->find($id)->pendidikan }}</td>
                             <td class="text-center">{{ number_format($nilai, 4) }}</td>
                             <td class="text-center">{{ $rank++ }}</td>
                         </tr>

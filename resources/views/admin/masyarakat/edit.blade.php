@@ -27,49 +27,14 @@
                         @csrf
                         @method('POST') {{-- Jika ini update, pakai @method('PUT') atau 'PATCH' --}}
                         <div class="row">
-
                             {{-- Kolom Kiri --}}
                             <div class="col-lg-6">
-                                <div class="mb-3">
-                                    <label for="nik" class="form-label">NIK</label>
-                                    <input type="text" name="nik" class="form-control" id="nik" maxlength="16"
-                                        pattern="\d{16}" required value="{{ $masyarakats->nik }}"
-                                        oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,16);">
-                                </div>
-
                                 <div class="mb-3">
                                     <label for="nama" class="form-label">Nama Lengkap</label>
                                     <input type="text" name="nama" class="form-control" id="nama"
                                         value="{{ $masyarakats->nama }}" required>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                                    <select name="jenis_kelamin" id="jenis_kelamin" class="form-select" required>
-                                        <option value="" disabled>-- Pilih --</option>
-                                        <option value="Laki-laki"
-                                            {{ $masyarakats->jenis_kelamin == 'Laki-laki' ? 'selected' : '' }}>Laki-laki
-                                        </option>
-                                        <option value="Perempuan"
-                                            {{ $masyarakats->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>Perempuan
-                                        </option>
-                                    </select>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="alamat" class="form-label">Alamat</label>
-                                    <textarea name="alamat" id="alamat" class="form-control" rows="1" required>{{ $masyarakats->alamat }}</textarea>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="no_hp" class="form-label">No. HP</label>
-                                    <input type="text" name="no_hp" class="form-control" id="no_hp"
-                                        value="{{ $masyarakats->no_hp }}" required>
-                                </div>
-                            </div>
-
-                            {{-- Kolom Kanan --}}
-                            <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label for="penghasilan" class="form-label">Penghasilan (Rp)</label>
                                     <input type="text" name="penghasilan" class="form-control" id="penghasilan"
@@ -82,20 +47,31 @@
                                     <input type="number" name="jumlah_tanggungan" class="form-control"
                                         id="jumlah_tanggungan" value="{{ $masyarakats->jumlah_tanggungan }}" required>
                                 </div>
+                            </div>
 
+                            {{-- Kolom Kanan --}}
+                            <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label for="pekerjaan" class="form-label">Pekerjaan</label>
                                     <select name="pekerjaan" id="pekerjaan" class="form-select" required>
                                         <option value="" disabled>-- Pilih --</option>
-                                        <option value="Pengangguran"
-                                            {{ $masyarakats->pekerjaan == 'Pengangguran' ? 'selected' : '' }}>Pengangguran
+                                        <option value="Tidak Bekerja / IRT"
+                                            {{ $masyarakats->pekerjaan == 'Tidak Bekerja / IRT' ? 'selected' : '' }}>Tidak
+                                            Bekerja / IRT</option>
+                                        <option value="Buruh Harian Lepas"
+                                            {{ $masyarakats->pekerjaan == 'Buruh Harian Lepas' ? 'selected' : '' }}>Buruh
+                                            Harian Lepas</option>
+                                        <option value="Sopir" {{ $masyarakats->pekerjaan == 'Sopir' ? 'selected' : '' }}>
+                                            Sopir</option>
+                                        <option value="Petani" {{ $masyarakats->pekerjaan == 'Petani' ? 'selected' : '' }}>
+                                            Petani</option>
+                                        <option value="WiraSwasta"
+                                            {{ $masyarakats->pekerjaan == 'WiraSwasta' ? 'selected' : '' }}>WiraSwasta
                                         </option>
-                                        <option value="Pekerja Tidak Tetap"
-                                            {{ $masyarakats->pekerjaan == 'Pekerja Tidak Tetap' ? 'selected' : '' }}>
-                                            Pekerja Tidak Tetap</option>
-                                        <option value="Pekerja Tetap"
-                                            {{ $masyarakats->pekerjaan == 'Pekerja Tetap' ? 'selected' : '' }}>Pekerja
-                                            Tetap</option>
+                                        <option value="Karyawan"
+                                            {{ $masyarakats->pekerjaan == 'Karyawan' ? 'selected' : '' }}>Karyawan</option>
+                                        <option value="Dosen" {{ $masyarakats->pekerjaan == 'Dosen' ? 'selected' : '' }}>
+                                            Dosen</option>
                                     </select>
                                 </div>
 
@@ -115,17 +91,20 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="kondisi_rumah" class="form-label">Kondisi Rumah</label>
-                                    <select name="kondisi_rumah" id="kondisi_rumah" class="form-select" required>
+                                    <label for="pendidikan" class="form-label">Pendidikan</label>
+                                    <select name="pendidikan" id="pendidikan" class="form-select" required>
                                         <option value="" disabled>-- Pilih --</option>
-                                        <option value="Tidak Layak"
-                                            {{ $masyarakats->kondisi_rumah == 'Tidak Layak' ? 'selected' : '' }}>Tidak
-                                            Layak</option>
-                                        <option value="Kurang Layak"
-                                            {{ $masyarakats->kondisi_rumah == 'Kurang Layak' ? 'selected' : '' }}>Kurang
-                                            Layak</option>
-                                        <option value="Layak"
-                                            {{ $masyarakats->kondisi_rumah == 'Layak' ? 'selected' : '' }}>Layak</option>
+                                        <option value="Tidak Sekolah"
+                                            {{ $masyarakats->pendidikan == 'Tidak Sekolah' ? 'selected' : '' }}>Tidak
+                                            Sekolah</option>
+                                        <option value="SD/SMP"
+                                            {{ $masyarakats->pendidikan == 'SD/SMP' ? 'selected' : '' }}>SD/SMP</option>
+                                        <option value="SMA/Sederajat"
+                                            {{ $masyarakats->pendidikan == 'SMA/Sederajat' ? 'selected' : '' }}>
+                                            SMA/Sederajat</option>
+                                        <option value="Perguruan Tinggi"
+                                            {{ $masyarakats->pendidikan == 'Perguruan Tinggi' ? 'selected' : '' }}>
+                                            Perguruan Tinggi</option>
                                     </select>
                                 </div>
                             </div>
@@ -136,6 +115,7 @@
                                 <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                             </div>
                         </div>
+
                     </form>
 
                 </div>

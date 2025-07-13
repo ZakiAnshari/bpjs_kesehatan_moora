@@ -25,7 +25,7 @@
                                         <div class="input-group shadow-sm" style="height: 38px; width: 100%;">
                                             <input type="text" name="search" value="{{ request('search') }}"
                                                 class="form-control border-end-0 py-2 px-3" style="font-size: 0.9rem;"
-                                                placeholder="Cari Nama atau NIK..." aria-label="Search">
+                                                placeholder="Cari Nama" aria-label="Search">
                                             <button class="btn btn-outline-primary px-3" type="submit"
                                                 style="font-size: 0.9rem;">
                                                 <i class="bx bx-search"></i>
@@ -70,13 +70,6 @@
                                                         <!-- Kolom Kiri -->
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
-                                                                <label for="nik" class="form-label">NIK</label>
-                                                                <input type="text" name="nik" class="form-control"
-                                                                    id="nik" maxlength="16" pattern="\d{16}" required
-                                                                    oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,16);">
-                                                            </div>
-
-                                                            <div class="mb-3">
                                                                 <label for="nama" class="form-label">Nama
                                                                     Lengkap</label>
                                                                 <input type="text" name="nama" class="form-control"
@@ -84,40 +77,11 @@
                                                             </div>
 
                                                             <div class="mb-3">
-                                                                <label for="jenis_kelamin" class="form-label">Jenis
-                                                                    Kelamin</label>
-                                                                <select name="jenis_kelamin" id="jenis_kelamin"
-                                                                    class="form-select" required>
-                                                                    <option value="" disabled selected>-- Pilih --
-                                                                    </option>
-                                                                    <option value="Laki-laki">Laki-laki</option>
-                                                                    <option value="Perempuan">Perempuan</option>
-                                                                </select>
-                                                            </div>
-
-                                                            <div class="mb-3">
-                                                                <label for="alamat" class="form-label">Alamat</label>
-                                                                <textarea name="alamat" id="alamat" class="form-control" rows="1" required></textarea>
-                                                            </div>
-
-                                                            <div class="mb-3">
-                                                                <label for="no_hp" class="form-label">Nomor HP</label>
-                                                                <input type="text" name="no_hp" class="form-control"
-                                                                    id="no_hp" maxlength="15"
-                                                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                                                                    required>
-                                                            </div>
-                                                        </div>
-
-                                                        <!-- Kolom Kanan -->
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
                                                                 <label for="penghasilan" class="form-label">Penghasilan
                                                                     (Rp)</label>
                                                                 <input type="text" name="penghasilan"
                                                                     class="form-control" id="penghasilan"
-                                                                    oninput="formatRupiah(this)" placeholder="Rp."
-                                                                    required>
+                                                                    oninput="formatRupiah(this)" placeholder="Rp." required>
                                                             </div>
 
                                                             <div class="mb-3">
@@ -126,18 +90,25 @@
                                                                 <input type="number" name="jumlah_tanggungan"
                                                                     class="form-control" id="jumlah_tanggungan" required>
                                                             </div>
+                                                        </div>
 
+                                                        <!-- Kolom Kanan -->
+                                                        <div class="col-lg-6">
                                                             <div class="mb-3">
-                                                                <label for="pekerjaan" class="form-label">Status
-                                                                    Pekerjaan</label>
-                                                                <select name="pekerjaan" id="pekerjaan"
-                                                                    class="form-select" required>
+                                                                <label for="pekerjaan" class="form-label">Pekerjaan</label>
+                                                                <select name="pekerjaan" id="pekerjaan" class="form-select"
+                                                                    required>
                                                                     <option value="" disabled selected>-- Pilih --
                                                                     </option>
-                                                                    <option value="Pengangguran">Pengangguran</option>
-                                                                    <option value="Pekerja Tidak Tetap">Pekerja Tidak Tetap
+                                                                    <option value="Tidak Bekerja / IRT">Tidak Bekerja / IRT
                                                                     </option>
-                                                                    <option value="Pekerja Tetap">Pekerja Tetap</option>
+                                                                    <option value="Buruh Harian Lepas">Buruh Harian Lepas
+                                                                    </option>
+                                                                    <option value="Sopir">Sopir</option>
+                                                                    <option value="Petani">Petani</option>
+                                                                    <option value="WiraSwasta">WiraSwasta</option>
+                                                                    <option value="Karyawan">Karyawan</option>
+                                                                    <option value="Dosen">Dosen</option>
                                                                 </select>
                                                             </div>
 
@@ -155,19 +126,22 @@
                                                             </div>
 
                                                             <div class="mb-3">
-                                                                <label for="kondisi_rumah" class="form-label">Kondisi
-                                                                    Rumah</label>
-                                                                <select name="kondisi_rumah" id="kondisi_rumah"
+                                                                <label for="pendidikan" class="form-label">Pendidikan
+                                                                    Terakhir</label>
+                                                                <select name="pendidikan" id="pendidikan"
                                                                     class="form-select" required>
                                                                     <option value="" disabled selected>-- Pilih --
                                                                     </option>
-                                                                    <option value="Tidak Layak">Tidak Layak</option>
-                                                                    <option value="Kurang Layak">Kurang Layak</option>
-                                                                    <option value="Layak">Layak</option>
+                                                                    <option value="Tidak Sekolah">Tidak Sekolah</option>
+                                                                    <option value="SD/SMP">SD/SMP</option>
+                                                                    <option value="SMA/Sederajat">SMA/Sederajat</option>
+                                                                    <option value="Perguruan Tinggi">Perguruan Tinggi
+                                                                    </option>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                 </div>
 
                                                 <!-- Tombol -->
@@ -187,30 +161,33 @@
                                     <thead>
                                         <tr>
                                             <th style="width: 5%">No</th>
-                                            <th>NIK</th>
-                                            <th>Nama Lengkap</th>
-                                            <th>Jenis Kelamin</th>
-                                            <th>No Telepon</th>
+                                            <th>Nama</th>
+                                            <th>Pekerjaan</th>
+
+                                            <th>Status Rumah</th>
+                                            <th>Pendidikan</th>
                                             @unless (auth()->user()->role_id == 3)
                                                 <th class="text-center" style="width: 80px;">Aksi</th>
                                             @endunless
                                         </tr>
+                                    </thead>
                                     <tbody>
                                         @forelse ($masyarakats as $index => $item)
                                             <tr>
                                                 <td>{{ $masyarakats->firstItem() + $index }}</td>
-                                                <td>{{ $item->nik }}</td>
                                                 <td>{{ $item->nama }}</td>
-                                                <td>{{ $item->jenis_kelamin }}</td>
-                                                <td>{{ $item->no_hp }}</td>
+                                                <td>{{ $item->pekerjaan }}</td>
+
+                                                <td>{{ $item->status_rumah }}</td>
+                                                <td>{{ $item->pendidikan }}</td>
 
                                                 @if (auth()->check() && auth()->user()->role_id != 3)
                                                     <td>
-                                                        <a href="masyarakat-show/{{ $item->id }}"
+                                                        <a href="{{ url('masyarakat-show/' . $item->id) }}"
                                                             class="btn btn-icon btn-outline-info" title="Lihat Data">
                                                             <i class="bx bx-show"></i>
                                                         </a>
-                                                        <a href="masyarakat-edit/{{ $item->id }}"
+                                                        <a href="{{ url('masyarakat-edit/' . $item->id) }}"
                                                             class="btn btn-icon btn-outline-primary" title="Edit Data">
                                                             <i class="bx bx-edit-alt"></i>
                                                         </a>
@@ -223,17 +200,15 @@
                                                         </a>
                                                     </td>
                                                 @endif
-
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="8" class="text-center">Data Alternatif kosong.</td>
+                                                <td colspan="8" class="text-center">Data masyarakat kosong.</td>
                                             </tr>
                                         @endforelse
                                     </tbody>
-                                    </thead>
-
                                 </table>
+
 
                                 <!-- Pagination -->
                                 <div class="d-flex justify-content-end mt-3">
@@ -294,5 +269,7 @@
         document.getElementById('tanggal').setAttribute('min', today);
         document.getElementById('jatuh_tempo').setAttribute('min', today);
     </script>
+
+
     @include('sweetalert::alert')
 @endsection
