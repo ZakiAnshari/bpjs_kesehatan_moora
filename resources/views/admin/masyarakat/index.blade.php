@@ -79,10 +79,18 @@
                                                             <div class="mb-3">
                                                                 <label for="penghasilan" class="form-label">Penghasilan
                                                                     (Rp)</label>
-                                                                <input type="text" name="penghasilan"
-                                                                    class="form-control" id="penghasilan"
-                                                                    oninput="formatRupiah(this)" placeholder="Rp." required>
+                                                                <select name="penghasilan" id="penghasilan"
+                                                                    class="form-select" required>
+                                                                    <option value="" disabled selected>-- Pilih --
+                                                                    </option>
+                                                                    <option value="<3000000">
+                                                                        < Rp 3.000.000</option>
+                                                                    <option value="3000000-5000000">Rp 3.000.000 - Rp
+                                                                        5.000.000</option>
+                                                                    <option value=">5000000">> Rp 5.000.000</option>
+                                                                </select>
                                                             </div>
+
 
                                                             <div class="mb-3">
                                                                 <label for="jumlah_tanggungan" class="form-label">Jumlah

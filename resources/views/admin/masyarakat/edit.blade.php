@@ -34,13 +34,25 @@
                                     <input type="text" name="nama" class="form-control" id="nama"
                                         value="{{ $masyarakats->nama }}" required>
                                 </div>
-
                                 <div class="mb-3">
                                     <label for="penghasilan" class="form-label">Penghasilan (Rp)</label>
-                                    <input type="text" name="penghasilan" class="form-control" id="penghasilan"
-                                        oninput="formatRupiah(this)" placeholder="Rp."
-                                        value="Rp. {{ number_format($masyarakats->penghasilan, 0, ',', '.') }}" required>
+                                    <select name="penghasilan" id="penghasilan" class="form-select" required>
+                                        <option value="" disabled
+                                            {{ old('penghasilan', $masyarakats->penghasilan ?? '') == '' ? 'selected' : '' }}>
+                                            -- Pilih --</option>
+                                        <option value="<3000000"
+                                            {{ old('penghasilan', $masyarakats->penghasilan ?? '') == '<3000000' ? 'selected' : '' }}>
+                                            < Rp 3.000.000</option>
+                                        <option value="3000000-5000000"
+                                            {{ old('penghasilan', $masyarakats->penghasilan ?? '') == '3000000-5000000' ? 'selected' : '' }}>
+                                            Rp 3.000.000 - Rp 5.000.000</option>
+                                        <option value=">5000000"
+                                            {{ old('penghasilan', $masyarakats->penghasilan ?? '') == '>5000000' ? 'selected' : '' }}>
+                                            > Rp 5.000.000</option>
+                                    </select>
                                 </div>
+
+
 
                                 <div class="mb-3">
                                     <label for="jumlah_tanggungan" class="form-label">Jumlah Tanggungan</label>

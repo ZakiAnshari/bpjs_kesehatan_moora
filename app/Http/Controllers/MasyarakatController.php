@@ -34,24 +34,17 @@ class MasyarakatController extends Controller
 
     public function store(Request $request)
     {
-        // Validasi data
         $validated = $request->validate([
             'nama'              => 'required|string|max:255',
             'pekerjaan'         => 'required|string|max:100',
-            'penghasilan'       => 'required',
+            'penghasilan'       => 'required|string',
             'jumlah_tanggungan' => 'required|integer|min:0',
             'status_rumah'      => 'required|string|max:100',
             'pendidikan'        => 'required|string|max:100',
         ]);
 
-
-        // Bersihkan format rupiah langsung di array
-        $validated['penghasilan'] = (int) preg_replace('/[^\d]/', '', $validated['penghasilan']);
-
-        // Simpan data
         Masyarakat::create($validated);
 
-        // Notifikasi dan redirect
         Alert::success('Sukses', 'Data masyarakat berhasil ditambahkan');
         return redirect()->route('masyarakat.index');
     }
@@ -68,29 +61,22 @@ class MasyarakatController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Validasi data
         $validated = $request->validate([
             'nama'              => 'required|string|max:255',
             'pekerjaan'         => 'required|string|max:100',
-            'penghasilan'       => 'required',
+            'penghasilan'       => 'required|string',
             'jumlah_tanggungan' => 'required|integer|min:0',
             'status_rumah'      => 'required|string|max:100',
             'pendidikan'        => 'required|string|max:100',
         ]);
 
-        // Bersihkan format rupiah
-        $validated['penghasilan'] = (int) preg_replace('/[^\d]/', '', $validated['penghasilan']);
-
-        // Ambil data yang akan diupdate
         $masyarakat = Masyarakat::findOrFail($id);
-
-        // Update data langsung
         $masyarakat->update($validated);
 
-        // Redirect dengan notifikasi
         Alert::success('Sukses', 'Data masyarakat berhasil diperbarui');
         return redirect()->route('masyarakat.index');
     }
+
 
     public function show($id)
     {

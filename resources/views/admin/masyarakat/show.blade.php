@@ -55,9 +55,9 @@
                                         <!-- Baris 2 -->
                                         <div class="col-md-6 border-bottom pb-3 mb-3">
                                             <label class="text-muted mb-1">Penghasilan</label>
-                                            <div class="fw-semibold">Rp
-                                                {{ number_format($masyarakats->penghasilan, 0, ',', '.') }}</div>
+                                            <div class="fw-semibold">{{ $masyarakats->penghasilan }}</div>
                                         </div>
+
                                         <div class="col-md-6 border-bottom pb-3 mb-3">
                                             <label class="text-muted mb-1">Jumlah Tanggungan</label>
                                             <div class="fw-semibold">{{ $masyarakats->jumlah_tanggungan }}</div>
