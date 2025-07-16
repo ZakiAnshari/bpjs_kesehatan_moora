@@ -35,7 +35,7 @@
             </a>
         </li>
         {{-- Kriteria --}}
-        @if (auth()->check() && auth()->user()->role_id != 3)
+        @if (auth()->check() && auth()->user()->role_id == 1)
             <li class="menu-item {{ Request::is('kriteria*') ? 'active' : '' }}">
                 <a href="/kriteria" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-slider-alt"></i>
@@ -43,6 +43,7 @@
                 </a>
             </li>
         @endif
+
 
 
 
